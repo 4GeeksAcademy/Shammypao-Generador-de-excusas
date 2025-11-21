@@ -1,28 +1,27 @@
-// definir arrays con las partes de la excusa
-let who = ['The dog', 'My grandma', 'The mailman', 'My bird'];
-let action = ['ate', 'peed', 'crushed', 'broke'];
-let what = ['my homework', 'my phone', 'the car'];
-let when = ['before the class', 'while I was sleeping', 'while I was exercising', 'during my lunch', 'while I was praying'];
-
-// crear la función que genere la exusa
 function generateExcuse() {
-    // 2.1: Escoger una palabra aleatoria de cada array
-    let randomWho = who[Math.floor(Math.random() * who.length)];
-    let randomAction = action[Math.floor(Math.random() * action.length)];
-    let randomWhat = what[Math.floor(Math.random() * what.length)];
-    let randomWhen = when[Math.floor(Math.random() * when.length)];
+    const who = ['El perro', 'Mi abuela', 'Su tortuga', 'Mi pájaro'];
+    const action = ['se comió', 'orino en', 'aplastó', 'rompió'];
+    const what = ['mi tarea', 'las llaves', 'el coche', 'el celular'];
+    const when = ['antes de la clase', 'justo a tiempo', 'durante mi almuerzo',
+        'cuando terminé', 'mientras rezaba'];
 
-    // construcción de la excusa 
-    let excuse = randomWho + ' ' + randomAction + ' ' + randomWhat + ' ' + randomWhen + '.';
-    
+    const whoInd = Math.floor(Math.random() * who.length);
+    const actionInd = Math.floor(Math.random() * action.length);
+    const whatInd = Math.floor(Math.random() * what.length);
+    const whenInd = Math.floor(Math.random() * when.length);
 
-    return excuse;
-}
 
-// conecta el documento app.js con el html
-window.onload = function() {
-    // busca el elemeto con ID "excuse"
-    let excuseElement = document.getElementById("excuse");
-    
-    excuseElement.innerHTML = generateExcuse();
+    const excuse = `${who[whoInd]} ${action[actionInd]} ${whatInd} ${whenInd}.`;
+
+    const excuseElement = document.getElementById("excuse");
+    if (excuseElement) {
+        excuseElement.innerHTML = excuse;
+    }
+};
+
+window.onload = () => {
+   const generateBtn = document.getElementById("generate");
+    if (generateBtn) {  
+        generateBtn.addEventListener("click", generateExcuse);
+    };
 };
